@@ -6,6 +6,7 @@ const hbs = require("hbs")
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const url = require("url")
+const cryptojs = require("crypto-js")
 
 const app = express();
 var path = require("path");
@@ -60,7 +61,7 @@ app.post("/login",urlencoder,(req,res)=>{
             req.session.email = doc.email
             res.redirect("/home")
         }, (err)=>{
-            res.redirect("/")
+
         }) 
     }
 })
@@ -73,7 +74,7 @@ app.post("/signup",urlencoder,(req,res)=>{
     let user = new User({
         username: username,
         email: email,
-        password: pass
+        password: cryptojs.AES.encrypt(pass,"password_key")
     })
     
     user.save().then((doc)=>{
