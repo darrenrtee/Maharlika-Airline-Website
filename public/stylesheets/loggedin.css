@@ -13,7 +13,7 @@ body{
 
 #logContent{
     
-    display: flex;
+    display: none;
     position: absolute;
     background-color: white;
     height: 250px;
@@ -31,14 +31,6 @@ body{
     flex-direction: column;
 }
 #signup{
-    display: none;
-    flex-direction: column;
-}
-#account{
-    display: flex;
-    flex-direction: column;
-}
-#booked{
     display: none;
     flex-direction: column;
 }
@@ -80,7 +72,7 @@ body{
     
 }
 
-#signin{
+#myflightbtn{
     
     border: 2px solid #57A0D3;
     padding-left: 5px;
@@ -88,13 +80,27 @@ body{
     border-radius: 3px;
     
 }
-#signin:hover{
+#myflightbtn:hover{
     
     cursor: pointer;
     color: white;
     background-color: #7285A5;
     border-color: #7285A5;
     
+}
+
+#accountdetailsbtn{
+    border: 2px solid #57A0D3;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+}
+
+#accountdetailsbtn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #7285A5;
+    border-color: #7285A5;
 }
 
 #botContainer{
@@ -136,7 +142,7 @@ body{
     background-color: white;
     
     position: absolute;
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     
@@ -162,12 +168,23 @@ body{
     background-color: white;
     
     position: absolute;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     
 }
 
+
+#ticket{
+     width: 750px;
+    height: 600px;
+    background-color: white;
+    
+    position: absolute;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 .basta{
     
     width: 100px;
@@ -220,7 +237,7 @@ body{
     overflow-y: scroll;
     font-size: 30px;
     width: 600px;
-    height: 400px;
+    height: 500px;
     
 }
 
@@ -246,19 +263,24 @@ body{
     border-color: #57A0D3;
     transition: all 0.3s ease 0s;
 }
-
+#account{
+    display: flex;
+    flex-direction: column;
+}
 .tickets{
     margin: 0 auto;
     margin-top: 15px;
     width: 500px;
-    height: 100px;
+    height: 150px;
     box-shadow: 3px 3px 3px 3px darkgrey;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
-
+#hiddendel{
+    display: none;
+}
 .deets{
     background-color: red;
     width: 100px;
@@ -279,4 +301,18 @@ body{
 }
 .arrow-bottom {
   transform: rotate(135deg);
+}
+
+#bookform{
+    display:none;
+}
+#Myflights{
+    width: 750px;
+    height: 600px;
+    background-color: white;
+    
+    position: absolute;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
 }

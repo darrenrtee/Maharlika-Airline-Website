@@ -2,39 +2,40 @@
 
     <head>
     
-        <link rel="stylesheet" type="text/css" href="/stylesheets/loggedin.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/homepage.css">
         <script src = "/Jquery.js"></script>
         <script>
                 var currpage = {{currpage}}
                 
                 $(document).ready(()=>{
                     init()
-                    $("button.delete").click(function(){
-                        console.log("pasok")
-                        let flightid = $(this).attr("data-id")
-                        console.log(flightid)
-                        $("#del").val(flightid)
-                        $("#hiddendel").submit()
-                    })
-                    
-                    $("#accountdetailsbtn").click(function(){
+                    $("#signin").click(function(){
+                         $("#logContent").css("display", "none");
+                        $("#login").css("display", "none");
+                        $("#signup").css("display", "none");
                         $("#logContent").css("display", "block");
+                        $("#login").css("display", "block");
                     })
                     
-                    $("#myflightbtn").click(function(){
-                        $("#searchFlight").css("display","none");
-                        $("#selectFlight").css("display","none");
-                        $("#personalDetails").css("display","none");
-                        $("#Payment").css("display","none");
-                        $("#Ticket").css("display","none");
-                        $("#Myflights").css("display","flex");
+                    $("#signupbutton").click(function(){
+                         $("#logContent").css("display", "none");
+                        $("#login").css("display", "none");
+                        $("#signup").css("display", "none");
+                        $("#logContent").css("display", "block");
+                        $("#signup").css("display", "block");
                     })
                     
-                    $("#exitbtn").click(function(){
+                    $("#cancel").click(function(){
                         $("#logContent").css("display", "none");
-                    
+                        $("#login").css("display", "none");
+                        $("#signup").css("display", "none");
                     })
                     
+                    $("#cancel1").click(function(){
+                        $("#logContent").css("display", "none");
+                        $("#login").css("display", "none");
+                        $("#signup").css("display", "none");
+                    })
                     
                     $("input.select:radio").change(function(){
                         let flightid = $(this).attr("data-id")
@@ -90,9 +91,6 @@
     </head>
     
     <body>
-        <form action = 'deletemyflight' method = "post" id = 'hiddendel'>
-            <input type = 'text' name = 'kek' id = 'del'>
-        </form>
         <form action = 'bookflight' method = "post" id = 'bookform'>
             <input type = 'text' name = 'flightid' id = 'bookinput'>
         </form>
@@ -105,28 +103,36 @@
         
         <div id="logContainer">
         
-            <h3>Hello {{username}}!</h3>
-            <div id="myflightbtn">My Flights</div>
-            <div id="accountdetailsbtn">Account Details</div>
+            <h3>Hello Guest!</h3>
+            <div id="signin">SIGN IN</div>
+            <div id="signupbutton">SIGN UP</div>
             
         </div>
         
         <div id="logContent">
         
-            <div id="account">
-                
-                Email : {{email}}
-                <br>
-                Username : {{username}}
-                <br>
-                <br>
-                <input type="button" class="submit" value="EXIT" style="width: 100%;" id = 'exitbtn'><br>
-                
+            <div id="login">
+                <form action="login" method="post">
+                    Username<input type="text" class="input" name = 'un'>
+                    Password<input type="password" class="input" name = 'pw'><br><br>
+                    <input type="submit" class="submit" style="width: 100%;">
+                </form>
+                    <input type="button" class="submit" value="CANCEL" style="width: 100%;"  id = 'cancel'>
+            </div>
+            
+            <div id="signup">
+            
+                <form action="signup" method="post">
+                    Username<input type="text" class="input" name = 'un'>
+                    Email Address:<input type="text" class="input" name = 'email'><br>
+                    Password:<input type="password" class="input" name = 'pass'><br>
+                    <input type="submit" class="submit" style="width: 100%;">
+                </form>
+                    <input type="button" class="submit" value="CANCEL" style="width: 100%;" id = 'cancel1'>
             </div>
         
         </div>
-        
-        
+    
         <div id="botContainer">
         
             <div id="searchFlight">
@@ -258,39 +264,10 @@
                 
             </div>
             
-            <div id="Myflights">
-                <h2>My Flights</h2>
-                <div id="flightcontent">
-                {{#each myflights}}
-                    <div class="tickets">
-                        <div class="deets">
-                            {{flyFrom}}<br>
-                                <h7>to</h7>
-                            {{flyTo}}
-                        </div>
-                        <div class="deets">
-                            Flight Date/Time<br>
-                            {{month}}-{{day}}-{{year}}<br>
-                            {{departuretime}}
-                        </div>
-                        <div class="deets">
-                            Price<br>
-                            {{price}}<br>
-                            with tax
-                        </div>
-                        <div class="deets">
-                            <button class="delete" data-id="{{_id}}">Delete</button>
-                        </div>
-                    </div>
-                {{/each}}
-                    
-                </div>    
-            </div>
-            
             <div id="Ticket">
                 <div id="content">
                 
-                    <form method="get" action="home">
+                    <form method="get" action="/">
                         
                         Your E-Ticket will be sent to : {{email}}<br><br>
                         <input type="submit" value="Book Again" style="width: 100%;" class="submit">

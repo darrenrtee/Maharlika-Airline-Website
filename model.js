@@ -1,16 +1,9 @@
 const mongoose = require("mongoose")
 
 var userSchema = mongoose.Schema({
-    username : String,
-    password : String,
-    email : String,
-    bday : Date,
-    nationality : String,
-    passportNum : String,
-    passportExpiry : Date,
-    cardNum : Number,
-    cardCCV : Number,
-    cardExpiry : Date,
+    username: String,
+    email: String,
+    password: String
 })
 
 var flightSchema = mongoose.Schema({
@@ -28,7 +21,17 @@ var flightSchema = mongoose.Schema({
 
 var bookedFlightsSchema = mongoose.Schema({
     flightNum : String,
-    passportNum : String
+    passportNum : String,
+    fullname : String,
+    emailadd : String,
+    birthday : Date,
+    departuretime: String,
+    month: String,
+    day: String,
+    year: String,
+    flyFrom : String,
+    flyTo : String,
+    price : Number
 })
 
 var User = mongoose.model("User", userSchema)
