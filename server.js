@@ -6,7 +6,7 @@ const hbs = require("hbs")
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const url = require("url")
-const cryptojs = require("xs")
+const cryptojs = require("crypto-js")
 
 const app = express();
 var path = require("path");
