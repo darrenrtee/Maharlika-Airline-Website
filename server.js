@@ -1,3 +1,4 @@
+var port = process.env.PORT || 3000
 const express = require("express")
 const session = require("express-session")
 const bodyparser = require("body-parser")
@@ -104,6 +105,6 @@ app.get("/admin", (req,res) =>{
     })
 })
 
-app.listen(3000, ()=>{
+app.listen(port, ()=>{
     console.log("live at port 3000");
 })
