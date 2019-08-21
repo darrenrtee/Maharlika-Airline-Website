@@ -1,0 +1,139 @@
+<html>
+
+    <head>
+    
+        <link rel="stylesheet" type="text/css" href="/stylesheets/admin.css">
+        <script src = "/Jquery.js"></script>
+        <script>
+            var today = new Date().toISOString().split('T')[0];
+            $(document).ready(()=>{
+                init()
+                
+                $("button.delete").click(function(){
+                    console.log("pasok")
+                    let flightid = $(this).attr("data-id")
+                    console.log(flightid)
+                    $("#del").val(flightid)
+                    $("#hiddendel").submit()
+                })
+                
+                $("#menuoptions").click(function(){
+                    
+                    $("#logoutform").submit()
+                })
+            })    
+            
+            function init(){
+                document.getElementById("depdate").setAttribute('min', today);
+            }
+            
+        </script>
+    </head>
+    
+    <body>
+        <form action = 'deleteflight' method = "post" id = 'hiddendel'>
+            <input type = 'text' name = 'delflight' id = 'del'>
+        </form>
+        <form action = 'logout' id = 'logoutform'>
+        
+        </form>
+        <div id="topContainer">
+        
+            <div id="logo"></div>
+            <h1>Maharlika Airlines</h1>
+        
+        </div>
+        
+        <div id="logContainer">
+        
+            <h3>Hello Admin!</h3>
+            <div id="menuoptions">LOG OUT</div>
+            
+        </div>
+        
+        <div id="botContainer">
+        
+            <div id="selectFlight">
+                
+                <div id="addShit">
+                
+                    <form method="post" action="add">
+                
+                        Flying From: <input type="text" list="local" class="input" name = 'flyFrom'>
+                        <datalist id="local">
+                            <option value="Manila">
+                            <option value="Cebu">
+                            <option value="Davao">
+                            <option value="Kalibo">
+                            <option value="Iloilo">
+                            <option value="Puerto Prinsesa">
+                            <option value="Laguindingan">
+                            <option value="Bacolod">
+                            <option value="Tacloban">
+                            <option value="Zamboanga">
+                        </datalist><br>
+                        Flying To: <input type="text" list="local" class="input" name = 'flyTo'>
+                        <datalist id="local">
+                            <option value="Manila">
+                            <option value="Cebu">
+                            <option value="Davao">
+                            <option value="Kalibo">
+                            <option value="Iloilo">
+                            <option value="Puerto Prinsesa">
+                            <option value="Laguindingan">
+                            <option value="Bacolod">
+                            <option value="Tacloban">
+                            <option value="Zamboanga">
+                        </datalist><br>
+                        Departure Date: <input type="date" class="input" name = 'departure' id = 'depdate'> <br>
+                        Departure Time: <input type="time" class="input" name = 'departuretime'> <br>
+                        Price: (PHP) <input type="ext" class="input" name = 'price'> <br><br>
+                        <input type="submit" value="Add Flight" style="width: 100%;" class="submit">
+                    </form>
+                
+                </div>
+                
+                <div style="height: 10px; width: 90%; background-color:lightgrey; border-radius: 5px;"></div><br>
+                
+                <div id="tableDetails">
+                
+                    <div id="tabdet">From/To</div>
+                    <div id="tabdet">Time</div>
+                    <div id="tabdet">Price</div>
+                    <div id="tabdet">Delete</div>
+                    
+                </div>
+                
+                <div id="flightcontent">
+                     {{#each flights}}
+                    
+                    <div class="tickets">
+                        <div class="deets">
+                            {{flyFrom}}<br>
+                            <h7>to</h7>
+                            {{flyTo}}
+                        </div>
+                        <div class="deets">
+                            Flight Date<br>
+                            {{month}}-{{day}}-{{year}}  <br>
+                            {{departuretime}}<br>
+                        </div>
+                        <div class="deets">
+                            Price<br>
+                            {{price}}<br>
+                            with tax
+                        </div>
+                        <div class="deets">
+                            <button class="delete" data-id="{{_id}}">Delete</button>
+                        </div>
+                    </div>            
+                {{/each}}
+                </div>
+                
+            </div>
+        
+        </div>
+        
+    </body>
+
+</html>

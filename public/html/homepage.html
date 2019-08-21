@@ -1,0 +1,229 @@
+<html>
+
+    <head>
+    
+        <link rel="stylesheet" type="text/css" href="/stylesheets/homepage.css">
+        <script src = "/Jquery.js"></script>
+        <script>
+                $(document).ready(()=>{
+                    $("#signin").click(function(){
+                        $("#logContent").css("display", "block");
+                        $("#login").css("display", "block");
+                    })
+                    
+                    $("#signupbutton").click(function(){
+                        $("#logContent").css("display", "block");
+                        $("#signup").css("display", "block");
+                    })
+                    
+                    $("#cancel").click(function(){
+                        $("#logContent").css("display", "none");
+                        $("#login").css("display", "none");
+                        $("#signup").css("display", "none");
+                    })
+                    
+                    $("#cancel1").click(function(){
+                        $("#logContent").css("display", "none");
+                        $("#login").css("display", "none");
+                        $("#signup").css("display", "none");
+                    })
+                })    
+        </script>
+    </head>
+    
+    <body>
+        
+        <div id="topContainer">
+        
+            <div id="logo"></div>
+            <h1>Maharlika Airlines</h1>
+        
+        </div>
+        
+        <div id="logContainer">
+        
+            <h3>Hello Guest!</h3>
+            <div id="signin">SIGN IN</div>
+            <div id="signupbutton">SIGN UP</div>
+            
+        </div>
+        
+        <div id="logContent">
+        
+            <div id="login">
+                <form action="login" method="post">
+                    Username<input type="text" class="input" name = 'un'>
+                    Password<input type="password" class="input" name = 'pw'><br><br>
+                    <input type="submit" class="submit" style="width: 100%;">
+                </form>
+                    <input type="submit" class="submit" value="CANCEL" style="width: 100%;"  id = 'cancel'>
+            </div>
+            
+            <div id="signup">
+            
+                <form action="signup" method="post">
+                    Passport #:<input type="text" class="input">
+                    Password:<input type="password" class="input"><br><br>
+                    <input type="submit" class="submit" style="width: 100%;">
+                </form>
+                    <input type="submit" class="submit" value="CANCEL" style="width: 100%;" id = 'cancel1'>
+            </div>
+        
+        </div>
+    
+        <div id="botContainer">
+        
+            <div id="searchFlight">
+                <div class="basta"><div class="circle">1</div> Search Flights</div>
+                <div class="basta"><div class="circleUnchosen">2</div> Select Flights</div>
+                <div class="basta"><div class="circleUnchosen">3</div> Edit Details</div>
+                <div class="basta"><div class="circleUnchosen">4</div> Payment</div>
+                
+                <div id="content">
+                
+                    <form method="post" action="/search">
+                
+                        Flying From: <input type="text" list="local" class="input">
+                        <datalist id="local">
+                            <option value="Manila">
+                            <option value="Cebu">
+                            <option value="Davao">
+                            <option value="Kalibo">
+                            <option value="Iloilo">
+                            <option value="Puerto Prinsesa">
+                            <option value="Laguindingan">
+                            <option value="Bacolod">
+                            <option value="Tacloban">
+                            <option value="Zamboanga">
+                        </datalist><br><br>
+                        Flying To: <input type="text" list="local" class="input">
+                        <datalist id="local">
+                            <option value="Manila">
+                            <option value="Cebu">
+                            <option value="Davao">
+                            <option value="Kalibo">
+                            <option value="Iloilo">
+                            <option value="Puerto Prinsesa">
+                            <option value="Laguindingan">
+                            <option value="Bacolod">
+                            <option value="Tacloban">
+                            <option value="Zamboanga">
+                        </datalist><br><br>
+                        Departing On: <input type="date" class="input" min="2018-8-23"> <br><br>
+                        <input type="button" value="Find Flights" style="width: 100%;" class="submit">
+                    
+                    
+                    </form>
+                
+                </div>
+                
+            </div>
+            
+            <div id="selectFlight">
+                <div class="basta"><div class="circle">1</div> Search Flights</div>
+                <div class="basta"><div class="circle">2</div> Select Flights</div>
+                <div class="basta"><div class="circleUnchosen">3</div> Edit Details</div>
+                <div class="basta"><div class="circleUnchosen">4</div> Payment</div>
+                
+                <form method="post" action="/select" style="align-items: center; display: flex; flex-direction: column;">
+                <div id="flightcontent">
+                
+                    <div class="tickets">
+                        <div class="deets">
+                            Manila<br>
+                            <h7>to</h7>
+                            Bacolod
+                        </div>
+                        <div class="deets">
+                            Flight Time<br>
+                            0700<br>
+                            0800<br>
+                        </div>
+                        <div class="deets">
+                            Price<br>
+                            2000.30<br>
+                            with tax
+                        </div>
+                        <div class="deets">
+                            <input type="radio" name="flyt">
+                        </div>
+                    </div>
+                    <div class="tickets">
+                        <div class="deets">
+                            Manila<br>
+                            <h7>to</h7>
+                            Bacolod
+                        </div>
+                        <div class="deets">
+                            Flight Time<br>
+                            0700<br>
+                            0800<br>
+                        </div>
+                        <div class="deets">
+                            Price<br>
+                            2000.30<br>
+                            with tax
+                        </div>
+                        <div class="deets">
+                            <input type="radio" name="flyt">
+                        </div>
+                    </div>
+                    <div class="tickets"></div>
+                    <div class="tickets"></div>
+                    <div class="tickets"></div>
+                
+                </div>
+                <input type="button" value="Book Flight" style="width: 50%; height: 50px; padding: 10px;" class="submit">
+                </form>
+                
+            </div>
+            
+            <div id="personalDetails">
+                <div class="basta"><div class="circle">1</div> Search Flights</div>
+                <div class="basta"><div class="circle">2</div> Select Flights</div>
+                <div class="basta"><div class="circle">3</div> Edit Details</div>
+                <div class="basta"><div class="circleUnchosen">4</div> Payment</div>
+                
+                <div id="content">
+                
+                    <form method="post" action="/payment">
+                        
+                        Full Name: <input type="text" class="input"><br><br>
+                        Nationality: <input type="text" class="input"><br><br>
+                        Birthdate: <input type="date" class="input"> <br><br>
+                        Passport Number: <input type="text" class="input"><br><br>
+                        Date of Expiry: <input type="date" class="input" max="2019-8-23"> <br><br>
+                        <input type="button" value="Submit Information" style="width: 100%;" class="submit">
+                    
+                    </form>
+                
+                </div>
+                
+            </div>
+            
+            <div id="Payment">
+                <div class="basta"><div class="circle">1</div> Search Flights</div>
+                <div class="basta"><div class="circle">2</div> Select Flights</div>
+                <div class="basta"><div class="circle">3</div> Edit Details</div>
+                <div class="basta"><div class="circle">4</div> Payment</div>
+                
+                <div id="content">
+                
+                    <form method="post" action="/Booked">
+                        
+                        Credit Card Number: <input type="text" class="input"><br><br>
+                        Security Number/CVV: <input type="text" class="input"><br><br>
+                        Date of Expiry: <input type="date" class="input"> <br><br>
+                        <input type="button" value="Finalize Booking" style="width: 100%;" class="submit">
+                    
+                    </form>
+                
+                </div>
+                
+            </div>
+        
+        </div>
+        
+    </body>
+
+</html>
