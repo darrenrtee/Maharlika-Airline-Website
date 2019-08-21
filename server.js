@@ -60,7 +60,7 @@ app.post("/login",urlencoder,(req,res)=>{
             req.session.email = doc.email
             res.redirect("/home")
         }, (err)=>{
-
+            res.redirect("/")
         }) 
     }
 })
