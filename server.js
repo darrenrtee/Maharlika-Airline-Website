@@ -6,7 +6,7 @@ const hbs = require("hbs")
 const cookieparser = require("cookie-parser")
 const mongoose = require("mongoose")
 const url = require("url")
-const cryptojs = require("crypto-js")
+const cryptojs = require("xs")
 
 const app = express();
 var path = require("path");
@@ -55,14 +55,26 @@ app.post("/login",urlencoder,(req,res)=>{
         res.redirect("/admin")
     }
     else{
-        User.findOne({username:user, password:pass}).then((doc)=>{
-            console.log("user match")
-            req.session.username = doc.username
-            req.session.email = doc.email
-            res.redirect("/home")
-        }, (err)=>{
-
-        }) 
+        User.findOne({
+            username:user
+        },(err,doc)=>{
+            if(err)
+                res.send(err)
+            else if(!doc)
+                res.redirect("/")
+            else{
+                var phash = cryptojs.AES.decrypt(doc.password,"password_key")
+                var pnormal = phash.toString(cryptojs.enc.Utf8)
+                
+                if(pass != pnormal)
+                    res.redirect("/")
+                else{
+                    req.session.username = doc.username
+                    req.session.email = doc.email
+                    res.redirect("/home")
+                }
+            }
+        })
     }
 })
 
