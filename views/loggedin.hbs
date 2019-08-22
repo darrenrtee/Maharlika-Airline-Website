@@ -6,7 +6,7 @@
         <script src = "/Jquery.js"></script>
         <script>
                 var currpage = {{currpage}}
-                
+                var today = new Date().toISOString().split('T')[0];
                 $(document).ready(()=>{
                     init()
                     $("button.delete").click(function(){
@@ -50,6 +50,7 @@
                 })    
                 
                 function init(){
+                    document.getElementById("depdate").setAttribute('min', today);
                     if(currpage == "1"){
                         $("#searchFlight").css("display","flex");
                         $("#selectFlight").css("display","none");
@@ -165,7 +166,7 @@
                             <option value="Tacloban">
                             <option value="Zamboanga">
                         </datalist><br><br>
-                        Departing On: <input type="date" class="input" min="2018-8-23" name = 'Date'> <br><br>
+                        Departing On: <input type="date" class="input" min="2018-8-23" name = 'Date' id = 'depdate'> <br><br>
                         <input type="submit" value="Find Flights" style="width: 100%;" class="submit">
                     
                     
